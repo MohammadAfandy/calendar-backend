@@ -14,11 +14,11 @@ const validate = (data: Record<any, any>) => {
       errors.push({ param: 'phoneNumber', message: 'phoneNumber must be a number below 16 digit' });
     }
   }
-  if (typeof whatsappNotification !== 'boolean') {
-    errors.push({ param: 'telegramAccount', message: 'telegramAccount must true / false' });
+  if (whatsappNotification !== undefined && typeof whatsappNotification !== 'boolean') {
+    errors.push({ param: 'whatsappNotification', message: 'whatsappNotification must true / false' });
   }
-  if (typeof telegramNotification !== 'boolean') {
-    errors.push({ param: 'telegramAccount', message: 'telegramAccount must true / false' });
+  if (telegramNotification !== undefined && typeof telegramNotification !== 'boolean') {
+    errors.push({ param: 'telegramNotification', message: 'telegramNotification must true / false' });
   }
 
   if (errors.length) throw new ValidationError('Validation Fail', errors);
