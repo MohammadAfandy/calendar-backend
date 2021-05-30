@@ -17,6 +17,10 @@ export default async function (req: Request, res: Response, next: NextFunction):
     };
     next();
   } catch(error) {
-    next(error);
+    if (error instanceof jwt.JsonWebTokenError) {
+      next(new UnauthorizedError(error.message));
+    } else {
+      next(error);
+    }
   }
 }
